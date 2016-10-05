@@ -1,0 +1,35 @@
+{
+  "name": "cordova-plugin-nuance-speechkit",
+  "version": "1.0.0",
+  "description": "Cordova Nuance SpeechKit Plugin",
+  "cordova": {
+    "id": "cordova-plugin-nuance-speechkit",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shmarkus/cordova-plugin-nuance-speechkit.git"
+  },
+  "keywords": [
+    "cordova",
+    "nuance",
+    "speechkit",
+    "tts",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "Markus Karileet",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/Shmarkus/cordova-plugin-nuance-speechkit/issues"
+  },
+  "homepage": "https://github.com/Shmarkus/cordova-plugin-nuance-speechkit#readme"
+}
