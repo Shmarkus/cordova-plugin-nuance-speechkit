@@ -60,8 +60,7 @@ public class SpeechKit extends CordovaPlugin {
             options.setLanguage(new Language(args.getString(1)));
             Transaction transaction = session.speakString(textToSpeak, options, new Transaction.Listener() {
                 public void onAudio(Transaction transaction, Audio audio) {
-                    Log.d(TAG, "Speaking: " + textToSpeak);
-                    session.getAudioPlayer().playAudio(audio);
+                    //when text is received, it starts playback automatically
                 }
                 public void onSuccess(Transaction transaction, String s) {
                     Log.d(TAG, "Successful transaction: " + s);
