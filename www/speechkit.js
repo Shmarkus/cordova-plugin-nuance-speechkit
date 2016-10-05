@@ -8,7 +8,7 @@ var speechkit = {};
 speechkit.configure = function (url, apiKey, successCallback, failureCallback) {
     cordova.exec( successCallback,
         failureCallback,
-        'SpeechKit',
+        'speechkit',
         'configure',
         [url, apiKey]
     );
@@ -17,7 +17,7 @@ speechkit.configure = function (url, apiKey, successCallback, failureCallback) {
 speechkit.tts = function (text, successCallback, failureCallback) {
     cordova.exec( successCallback,
         failureCallback,
-        'SpeechKit',
+        'speechkit',
         'startTTS',
         [text]
     );

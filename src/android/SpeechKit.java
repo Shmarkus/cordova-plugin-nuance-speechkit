@@ -23,30 +23,13 @@ public class SpeechKit extends CordovaPlugin {
     private Session session;
     private String uri;
     private String api_key;
-    private boolean initialized = false;
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
     }
 
-    public void configure(JSONArray args) {
-        try {
-            this.uri = args.getString(0);
-            this.api_key = args.getString(1);
-
-            this.session = Session.Factory.session(this.cordova.getActivity().getApplicationContext(), Uri.parse(this.uri), this.api_key);
-            this.initialized = true;
-        } catch (Exception e) {
-            Log.e(TAG, "Configuring error! Reason: " + e.getMessage());
-        }
-    }
-
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (!this.initialized) {
-            Log.e(TAG, "Plugin not properly initialized");
-            return false;
-        }
         if ("startTTS".equals(action)) {
             this.startTTS(args);
             callbackContext.success();
@@ -57,6 +40,17 @@ public class SpeechKit extends CordovaPlugin {
             return true;
         }
         return false;  // Returning false results in a "MethodNotFound" error.
+    }
+
+    private void configure(JSONArray args) {
+        try {
+            this.uri = args.getString(0);
+            this.api_key = args.getString(1);
+
+            this.session = Session.Factory.session(this.cordova.getActivity().getApplicationContext(), Uri.parse(this.uri), this.api_key);
+        } catch (Exception e) {
+            Log.e(TAG, "Configuring error! Reason: " + e.getMessage());
+        }
     }
 
     private void startTTS(JSONArray args) {
