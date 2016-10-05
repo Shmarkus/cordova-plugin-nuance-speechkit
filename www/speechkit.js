@@ -14,12 +14,12 @@ speechkit.configure = function (url, apiKey, successCallback, failureCallback) {
     );
 };
 
-speechkit.tts = function (text, successCallback, failureCallback) {
+speechkit.tts = function (text, language, successCallback, failureCallback) {
     cordova.exec( successCallback,
         failureCallback,
         'speechkit',
         'startTTS',
-        [text]
+        [text, language]
     );
 };
 

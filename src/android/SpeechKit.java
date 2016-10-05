@@ -54,11 +54,10 @@ public class SpeechKit extends CordovaPlugin {
     }
 
     private void startTTS(JSONArray args) {
-        Transaction.Options options = new Transaction.Options();
-        options.setLanguage(new Language("ENG_USA"));
-        options.setVoice(new Voice("samantha")); //optional
         try {
+            Transaction.Options options = new Transaction.Options();
             final String textToSpeak = args.getString(0);
+            options.setLanguage(new Language(args.getString(1)));
             Transaction transaction = session.speakString(textToSpeak, options, new Transaction.Listener() {
                 public void onAudio(Transaction transaction, Audio audio) {
                     Log.d(TAG, "Speaking: " + textToSpeak);
