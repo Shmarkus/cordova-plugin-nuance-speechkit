@@ -3,12 +3,12 @@ package ee.helmes;
 import android.net.Uri;
 import android.util.Log;
 
+import com.ionicframework.cbda733418.R;
 import com.nuance.speechkit.Audio;
 import com.nuance.speechkit.Language;
 import com.nuance.speechkit.Session;
 import com.nuance.speechkit.Transaction;
 import com.nuance.speechkit.TransactionException;
-import com.nuance.speechkit.Voice;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -16,7 +16,6 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 public class SpeechKit extends CordovaPlugin {
     private static final String TAG = "SpeechKit";
