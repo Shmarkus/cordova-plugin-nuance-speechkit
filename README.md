@@ -27,6 +27,7 @@ export class SpeechKitExample {
       speechkit.tts(text, "ENG-GBR");
     });
   }
+}
 ```
 
 [Find out which languages are supported and what language codes are used](https://developer.nuance.com/public/index.php?task=supportedLanguages)
