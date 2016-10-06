@@ -21,11 +21,14 @@ import org.json.JSONObject;
 public class SpeechKit extends CordovaPlugin {
     private static final String TAG = "SpeechKit";
     private Session session;
-    private String uri;
-    private String api_key;
+
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
+        String uri = this.cordova.getActivity().getApplicationContext().getResources().getString(R.string.sk_url);
+        String app_key = this.cordova.getActivity().getApplicationContext().getResources().getString(R.string.sk_app_key);
+
+        this.session = Session.Factory.session(this.cordova.getActivity().getApplicationContext(), Uri.parse(uri), app_key);
     }
 
     @Override
@@ -34,23 +37,8 @@ public class SpeechKit extends CordovaPlugin {
             this.startTTS(args);
             callbackContext.success();
             return true;
-        } else if ("configure".equals(action)) {
-            this.configure(args);
-            callbackContext.success();
-            return true;
         }
         return false;  // Returning false results in a "MethodNotFound" error.
-    }
-
-    private void configure(JSONArray args) {
-        try {
-            this.uri = args.getString(0);
-            this.api_key = args.getString(1);
-
-            this.session = Session.Factory.session(this.cordova.getActivity().getApplicationContext(), Uri.parse(this.uri), this.api_key);
-        } catch (Exception e) {
-            Log.e(TAG, "Configuring error! Reason: " + e.getMessage());
-        }
     }
 
     private void startTTS(JSONArray args) {
