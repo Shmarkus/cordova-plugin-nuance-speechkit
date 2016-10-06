@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-nuance-speechkit",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Cordova Nuance SpeechKit Plugin",
   "cordova": {
     "id": "cordova-plugin-nuance-speechkit",
