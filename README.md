@@ -34,4 +34,3 @@ export class SpeechKitExample {
 
 ## TO-DO
  * Speech to text impl (ASR)
- * IOS version
