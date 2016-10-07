@@ -28,6 +28,9 @@
     <license>Apache 2.0</license>
     <keywords>cordova,nuance,speechkit,tts</keywords>
 
+    <preference name="URL" default="" />
+    <preference name="APP_KEY" default="" />
+
     <js-module src="www/speechkit.js" name="speechkit">
         <clobbers target="speechkit" />
     </js-module>
@@ -37,9 +40,6 @@
     </engines>
     <!-- android -->
     <platform name="android">
-        <preference name="URL" default="" />
-        <preference name="APP_KEY" default="" />
-
         <framework src="com.nuance:speechkit:2.1+@aar" />
 
         <config-file target="res/xml/config.xml" parent="/*">
@@ -62,16 +62,29 @@
     </platform>
 
     <!-- ios -->
-    <!-- TBD
     <platform name="ios">
+        <dependency id="cordova-plugin-cocoapod-support"/>
+
+        <pod id="SpeechKit" />
         <config-file target="config.xml" parent="/*">
-            <feature name="Device">
-                <param name="ios-package" value="CDVDevice"/>
+            <feature name="speechkit">
+                <param name="ios-package" value="CDVSpeechKit"/>
             </feature>
         </config-file>
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+            <array>
+                <dict>
+                    <key>sk_url</key>
+                    <string>$URL</string>
+                </dict>
+                <dict>
+                    <key>sk_app_key</key>
+                    <string>$APP_KEY</string>
+                </dict>
+            </array>
+        </config-file>
 
-        <header-file src="src/ios/CDVDevice.h" />
-        <source-file src="src/ios/CDVDevice.m" />
+        <header-file src="src/ios/CDVSpeechKit.h" />
+        <source-file src="src/ios/CDVSpeechKit.m" />
     </platform>
-    -->
 </plugin>
