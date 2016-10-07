@@ -23,8 +23,10 @@ public class SpeechKit extends CordovaPlugin {
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
-        String uri = this.cordova.getActivity().getApplicationContext().getResources().getString("sk_url");
-        String app_key = this.cordova.getActivity().getApplicationContext().getResources().getString("sk_app_key");
+        int skUrl = this.cordova.getActivity().getResources().getIdentifier("sk_url", "string", cordova.getActivity().getPackageName());
+        String uri = this.cordova.getActivity().getApplicationContext().getResources().getString(skUrl);
+        int skAppKey = this.cordova.getActivity().getResources().getIdentifier("sk_app_key", "string", cordova.getActivity().getPackageName());
+        String app_key = this.cordova.getActivity().getApplicationContext().getResources().getString(skAppKey);
 
         this.session = Session.Factory.session(this.cordova.getActivity().getApplicationContext(), Uri.parse(uri), app_key);
     }
