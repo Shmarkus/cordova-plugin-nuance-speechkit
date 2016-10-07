@@ -22,7 +22,7 @@
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-nuance-speechkit"
-    version="1.0.10">
+    version="1.0.11">
     <name>Nuance SpeechKit</name>
     <description>Cordova Nuance SpeechKit Plugin</description>
     <license>Apache 2.0</license>
@@ -36,7 +36,7 @@
     </js-module>
 
     <engines>
-        <engine name="cordova" version=">=3.0.0" />
+        <engine name="cordova" version=">=6.3.0" />
     </engines>
     <!-- android -->
     <platform name="android">
