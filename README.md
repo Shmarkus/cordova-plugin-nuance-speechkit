@@ -1,10 +1,10 @@
 # cordova-plugin-nuance-speechkit
-This is an implementation of [Nuance SpeechKit](https://developer.nuance.com) (v2.1.3) SDK in Cordova.
+This is an implementation of [Nuance SpeechKit](https://developer.nuance.com) (v2.1+) SDK in Cordova.
 
 ## Installation
 First create an account in the [Nuance Developers](https://developer.nuance.com/public/index.php?task=register) site. Then open your account and find the **URL** and **App Key** for your account. Include the plugin to your project using standard plugin add commands like
 ```Bash
-phonegap plugin add cordova-plugin-nuance-tts --variable URL=[your URL here] --variable APP_KEY=[your App Key here]
+cordova plugin add cordova-plugin-nuance-speechkit --variable URL=[your URL here] --variable APP_KEY=[your App Key here]
 ```
 
 > It is not possible to use the plugin without these variables! 
