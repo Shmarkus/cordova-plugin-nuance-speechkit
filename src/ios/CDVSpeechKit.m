@@ -2,7 +2,7 @@
 //  CDVSpeechKit.m
 //
 //  Created by Adam on 10/3/12.
-//  Updated by Markus Karileet 10/7/16
+//  Updated by Markus Karileet on 10/7/16
 //
 //
 
@@ -13,11 +13,12 @@
 /*
  * Initializes speech kit
  */
-- (void) initSpeechKit:(CDVInvokedUrlCommand*)command{
+- (void) pluginInitialize {
     NSLog(@"CDVSpeechKit.initSpeechKit: Entered method.");
-    NSString *path = [[NSBundle mainBundle] pathForResource: @"CFBundleURLTypes" ofType: @"plist"];
-    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
-    SKSession* session = [[SKSession alloc] initWithURL:[NSURL URLWithString:[dict objectForKey: @"sk_url"]] appToken:[dict objectForKey: @"sk_app_key"]];
+    NSBundle* mainBundle = [NSBundle mainBundle];
+    NSString *url = [mainBundle objectForInfoDictionaryKey:@"sk_url"];
+    NSString *appKey = [mainBundle objectForInfoDictionaryKey:@"sk_app_key"];
+    session = [[SKSession alloc] initWithURL:[NSURL URLWithString:url] appToken:appKey];
     NSLog(@"CDVSpeechKit.initSpeechKit: Leaving method.");
 }
 

@@ -22,7 +22,7 @@
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-nuance-speechkit"
-    version="1.0.9">
+    version="1.0.10">
     <name>Nuance SpeechKit</name>
     <description>Cordova Nuance SpeechKit Plugin</description>
     <license>Apache 2.0</license>
@@ -71,17 +71,11 @@
                 <param name="ios-package" value="CDVSpeechKit"/>
             </feature>
         </config-file>
-        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
-            <array>
-                <dict>
-                    <key>sk_url</key>
-                    <string>$URL</string>
-                </dict>
-                <dict>
-                    <key>sk_app_key</key>
-                    <string>$APP_KEY</string>
-                </dict>
-            </array>
+        <config-file target="*-Info.plist" parent="sk_url">
+            <string>$URL</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="sk_app_key">
+            <string>$APP_KEY</string>
         </config-file>
 
         <header-file src="src/ios/CDVSpeechKit.h" />
