@@ -3,7 +3,6 @@ package ee.helmes;
 import android.net.Uri;
 import android.util.Log;
 
-import com.ionicframework.cbda733418.R;
 import com.nuance.speechkit.Audio;
 import com.nuance.speechkit.Language;
 import com.nuance.speechkit.Session;
@@ -24,8 +23,8 @@ public class SpeechKit extends CordovaPlugin {
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
-        String uri = this.cordova.getActivity().getApplicationContext().getResources().getString(R.string.sk_url);
-        String app_key = this.cordova.getActivity().getApplicationContext().getResources().getString(R.string.sk_app_key);
+        String uri = this.cordova.getActivity().getApplicationContext().getResources().getString("sk_url");
+        String app_key = this.cordova.getActivity().getApplicationContext().getResources().getString("sk_app_key");
 
         this.session = Session.Factory.session(this.cordova.getActivity().getApplicationContext(), Uri.parse(uri), app_key);
     }
