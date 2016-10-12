@@ -3,10 +3,11 @@ package ee.helmes;
 import android.net.Uri;
 import android.util.Log;
 
-import com.ionicframework.cbda733418.R;
 import com.nuance.speechkit.Audio;
+import com.nuance.speechkit.DetectionType;
 import com.nuance.speechkit.Language;
 import com.nuance.speechkit.Recognition;
+import com.nuance.speechkit.RecognitionType;
 import com.nuance.speechkit.RecognizedPhrase;
 import com.nuance.speechkit.Session;
 import com.nuance.speechkit.Transaction;
@@ -74,6 +75,8 @@ public class SpeechKit extends CordovaPlugin {
         try {
             Transaction.Options options = new Transaction.Options();
             options.setLanguage(new Language(args.getString(0)));
+			options.setRecognitionType(RecognitionType.DICTATION);
+            options.setDetection(DetectionType.Short);
             Transaction transaction = session.recognize(options, new Transaction.Listener() {
                 public void onStartedRecording(Transaction transaction) {
                     //play audio!
