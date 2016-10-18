@@ -36,7 +36,7 @@
     </js-module>
 
     <engines>
-        <engine name="cordova" version=">=6.3.0" />
+        <engine name="cordova" version=">=6.2.0" />
     </engines>
     <!-- android -->
     <platform name="android">

@@ -1,5 +1,5 @@
 # cordova-plugin-nuance-speechkit
-This is an implementation of [Nuance SpeechKit](https://developer.nuance.com) (v2.1+) SDK in Cordova (6.3+).
+This is an implementation of [Nuance SpeechKit](https://developer.nuance.com) (v2.1+) SDK in Cordova (6.2+).
 
 ## Installation
 First create an account in the [Nuance Developers](https://developer.nuance.com/public/index.php?task=register) site. Then open your account and find the **URL** and **App Key** for your account. Include the plugin to your project using standard plugin add commands like
