@@ -13,4 +13,13 @@ speechkit.tts = function (text, language, successCallback, failureCallback) {
     );
 };
 
+speechkit.asr = function (language, successCallback, failureCallback) {
+    cordova.exec( successCallback,
+        failureCallback,
+        'speechkit',
+        'startASR',
+        [language]
+    );
+};
+
 module.exports = speechkit;
