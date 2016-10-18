@@ -1,13 +1,12 @@
 package ee.helmes;
 
+import android.content.res.Resources;
 import android.net.Uri;
 import android.util.Log;
 
 import com.nuance.speechkit.Audio;
-import com.nuance.speechkit.DetectionType;
 import com.nuance.speechkit.Language;
 import com.nuance.speechkit.Recognition;
-import com.nuance.speechkit.RecognitionType;
 import com.nuance.speechkit.RecognizedPhrase;
 import com.nuance.speechkit.Session;
 import com.nuance.speechkit.Transaction;
@@ -29,8 +28,12 @@ public class SpeechKit extends CordovaPlugin {
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
-        String uri = this.cordova.getActivity().getApplicationContext().getResources().getString(R.string.sk_url);
-        String app_key = this.cordova.getActivity().getApplicationContext().getResources().getString(R.string.sk_app_key);
+        String packageName = this.cordova.getActivity().getApplication().getPackageName();
+        Resources resources = this.cordova.getActivity().getApplication().getResources();
+        int skUrlResource = resources.getIdentifier("sk_url", "string", packageName);
+        int appKeyResource = resources.getIdentifier("sk_app_key", "string", packageName);
+        String uri = this.cordova.getActivity().getApplicationContext().getResources().getString(skUrlResource);
+        String app_key = this.cordova.getActivity().getApplicationContext().getResources().getString(appKeyResource);
 
         this.session = Session.Factory.session(this.cordova.getActivity().getApplicationContext(), Uri.parse(uri), app_key);
     }
@@ -75,8 +78,6 @@ public class SpeechKit extends CordovaPlugin {
         try {
             Transaction.Options options = new Transaction.Options();
             options.setLanguage(new Language(args.getString(0)));
-			options.setRecognitionType(RecognitionType.DICTATION);
-            options.setDetection(DetectionType.Short);
             Transaction transaction = session.recognize(options, new Transaction.Listener() {
                 public void onStartedRecording(Transaction transaction) {
                     //play audio!
