@@ -77,6 +77,9 @@
         <config-file target="*-Info.plist" parent="sk_app_key">
             <string>$APP_KEY</string>
         </config-file>
+        <config-file target="*-Info.plist" parent="NSMicrophoneUsageDescription">
+            <string>Required for speech recognition</string>
+        </config-file>
 
         <header-file src="src/ios/CDVSpeechKit.h" />
         <source-file src="src/ios/CDVSpeechKit.m" />
