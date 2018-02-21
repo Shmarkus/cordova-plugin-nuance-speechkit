@@ -1,10 +1,8 @@
-var speechkit = {};
+"use strict";
+function SpeechKit() {
+}
 
-/************
- * Bootstrap
- ************/
-
-speechkit.tts = function (text, language, successCallback, failureCallback) {
+SpeechKit.prototype.tts = function (text, language, successCallback, failureCallback) {
     cordova.exec( successCallback,
         failureCallback,
         'speechkit',
@@ -13,7 +11,7 @@ speechkit.tts = function (text, language, successCallback, failureCallback) {
     );
 };
 
-speechkit.asr = function (language, successCallback, failureCallback) {
+SpeechKit.prototype.asr = function (language, successCallback, failureCallback) {
     cordova.exec( successCallback,
         failureCallback,
         'speechkit',
@@ -22,4 +20,13 @@ speechkit.asr = function (language, successCallback, failureCallback) {
     );
 };
 
-module.exports = speechkit;
+SpeechKit.install = function () {
+    if (!window.plugins) {
+        window.plugins = {};
+    }
+
+    window.plugins.speechkit = new SpeechKit();
+    return window.plugins.speechkit;
+};
+
+cordova.addConstructor(SpeechKit.install);
