@@ -3,6 +3,7 @@
 //
 //  Created by Adam on 10/3/12.
 //  Updated by Markus Karileet on 10/7/16
+//  Updated by Markus Karileet on 17/9/18
 //
 //
 
@@ -30,6 +31,7 @@
     NSLog(@"CDVSpeechKit.startTTS: Entered method.");
     SKTransaction* transaction = [session speakString:[command.arguments objectAtIndex:0]
                                          withLanguage:[command.arguments objectAtIndex:1]
+                                         withVoice:[command.arguments objectAtIndex:2]
                                              delegate:self];
     NSLog(@"CDVSpeechKit.startTTS: Leaving method.");
 }

@@ -10,7 +10,7 @@ cordova plugin add cordova-plugin-nuance-speechkit --variable URL=[your URL here
 
 Next, add Ionic native binding
 ```Bash
-npm install --save @ionic-native/speechkit
+npm i -s @ionic-native/speechkit
 ```
 Add SpeechKit to your module **providers** section and you are ready
 

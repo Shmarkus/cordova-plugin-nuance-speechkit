@@ -1,4 +1,4 @@
-package ee.helmes;
+package ee.codehouse;
 
 import android.content.res.Resources;
 import android.net.Uri;
@@ -11,6 +11,7 @@ import com.nuance.speechkit.RecognizedPhrase;
 import com.nuance.speechkit.Session;
 import com.nuance.speechkit.Transaction;
 import com.nuance.speechkit.TransactionException;
+import com.nuance.speechkit.Voice;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -56,7 +57,8 @@ public class SpeechKit extends CordovaPlugin {
             Transaction.Options options = new Transaction.Options();
             final String textToSpeak = args.getString(0);
             options.setLanguage(new Language(args.getString(1)));
-            Log.e(TAG, "Java: will speak: " + textToSpeak);
+            options.setVoice(new Voice(args.getString(2)));
+            Log.e(TAG, "Java: will speak: " + textToSpeak + " using voice: " + args.getString(2) + " and language: " + args.getString(1));
             Transaction transaction = session.speakString(textToSpeak, options, new Transaction.Listener() {
                 public void onAudio(Transaction transaction, Audio audio) {
                     callbackContext.success("Playing audio");

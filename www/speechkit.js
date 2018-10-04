@@ -2,12 +2,12 @@
 function SpeechKit() {
 }
 
-SpeechKit.prototype.tts = function (text, language, successCallback, failureCallback) {
+SpeechKit.prototype.tts = function (text, language, voice, successCallback, failureCallback) {
     cordova.exec( successCallback,
         failureCallback,
         'speechkit',
         'startTTS',
-        [text, language]
+        [text, language, voice]
     );
 };
 

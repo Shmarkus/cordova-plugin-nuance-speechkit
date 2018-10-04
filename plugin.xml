@@ -22,7 +22,7 @@
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-nuance-speechkit"
-    version="1.0.13">
+    version="2.0.0">
     <name>Nuance SpeechKit</name>
     <description>Cordova Nuance SpeechKit Plugin</description>
     <license>Apache 2.0</license>
@@ -44,7 +44,7 @@
 
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="speechkit" >
-                <param name="android-package" value="ee.helmes.SpeechKit"/>
+                <param name="android-package" value="ee.codehouse.SpeechKit"/>
             </feature>
         </config-file>
         <config-file target="res/values/strings.xml" parent="/resources">
@@ -58,7 +58,7 @@
         </config-file>
 
 
-        <source-file src="src/android/SpeechKit.java" target-dir="src/ee/helmes" />
+        <source-file src="src/android/SpeechKit.java" target-dir="src/ee/codehouse" />
     </platform>
 
     <!-- ios -->
