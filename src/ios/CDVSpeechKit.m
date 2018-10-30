@@ -29,10 +29,16 @@
 - (void) startTTS:(CDVInvokedUrlCommand*)command{
 
     NSLog(@"CDVSpeechKit.startTTS: Entered method.");
-    SKTransaction* transaction = [session speakString:[command.arguments objectAtIndex:0]
-                                         withLanguage:[command.arguments objectAtIndex:1]
-                                         withVoice:[command.arguments objectAtIndex:2]
+    // If the voice is nil, use language default voice. If the voice is set, ignore language and use voices default lang.
+    if ([command.arguments objectAtIndex:2] == nil) {
+        SKTransaction* transaction = [session speakString:[command.arguments objectAtIndex:0]
+                                             withLanguage:[command.arguments objectAtIndex:1]
                                              delegate:self];
+    } else {
+        SKTransaction* transaction = [session speakString:[command.arguments objectAtIndex:0]
+                                             withVoice:[command.arguments objectAtIndex:2]
+                                             delegate:self];
+    }
     NSLog(@"CDVSpeechKit.startTTS: Leaving method.");
 }
 @end
