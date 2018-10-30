@@ -20,6 +20,15 @@ SpeechKit.prototype.asr = function (language, successCallback, failureCallback) 
     );
 };
 
+SpeechKit.prototype.stop = function (successCallback, failureCallback) {
+    cordova.exec( successCallback,
+        failureCallback,
+        'speechkit',
+        'stop',
+        []
+    );
+};
+
 SpeechKit.install = function () {
     if (!window.plugins) {
         window.plugins = {};

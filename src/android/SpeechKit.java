@@ -48,6 +48,9 @@ public class SpeechKit extends CordovaPlugin {
         } else if ("startASR".equals(action)) {
             this.startASR(args, callbackContext);
             return true;
+        } else if ("stop".equals(action)) {
+            this.stop(callbackContext);
+            return true;
         }
         return false;  // Returning false results in a "MethodNotFound" error.
     }
@@ -76,7 +79,7 @@ public class SpeechKit extends CordovaPlugin {
         }
     }
 
-    private void startASR(JSONArray args, final CallbackContext callbackContext) {
+    private void startASR(final CallbackContext callbackContext) {
         try {
             Transaction.Options options = new Transaction.Options();
             options.setLanguage(new Language(args.getString(0)));
@@ -110,6 +113,16 @@ public class SpeechKit extends CordovaPlugin {
             });
         } catch (JSONException e) {
             Log.e(TAG, "Unable to start ASR, Reason " + e.getMessage());
+        }
+    }
+
+    private void stop(JSONArray args, final CallbackContext callbackContext) {
+        try {
+            session.getAudioPlayer().stop();
+            Log.d(TAG, "Audio stopped");
+            callbackContext.success("Audio stopped");
+        } catch (Exception e) {
+            Log.e(TAG, "Unable to stop, Reason " + e.getMessage());
         }
     }
 }
